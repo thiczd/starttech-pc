@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <script>
+      fetch("nav.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("nav-placeholder").innerHTML = data;
+        });
+    </script>
+
+    <div>
+      <h1 class="startech-title">StarTech PC | IphoneRepairGods</h1>
+      <hr />
+      <h1>What we do:</h1>
+      <div style="display: flex">
+        <img
+          src="images/tablet-laptop-svgrepo-com.svg"
+          height="100"
+          width="70"
+        />
+        <ul>
+          <li>PC repairs</li>
+          <li>Smartphones and tablet repairs</li>
+          <li>Custom Gaming Build</li>
+          <li>Desktop and Laptop refurbished for sales</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
