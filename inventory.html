@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>About</title>
+    <title>Inventory</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,6 +11,8 @@
     />
   </head>
   <body>
+    <div id="nav-placeholder"></div>
+
     <script>
       fetch("nav.html")
         .then((response) => response.text())
@@ -18,22 +20,24 @@
           document.getElementById("nav-placeholder").innerHTML = data;
         });
     </script>
-    <div id="nav-placeholder"></div>
-    <p class="h3 mt-5 text-center">About Startech PC</p>
-    <hr />
 
-    <div
-      class="container border d-flex flex-column justify-content-center align-items-center"
-      style="height: 40vh"
-    >
-      <p>
-        Startech PC is general Tech repair shop where you can come in with your
-        devices and get them fixed.
-        <br />
-        We focus primarly on Computers (including laptops and desktops) and
-        phones
-      </p>
+    <div class="container" id="card">
+      <div class="row border justify-content-center mt-4">
+        <div class="col-md-4 border">
+          <p class="h5 text-center" id="item-name">Item name</p>
+          <hr />
+          <img
+            id="item-image"
+            src="images/placeholder.svg"
+            height="200"
+            width="200"
+          />
+          <hr />
+          <p id="item-desription" class="text-center mt-4">Description</p>
+        </div>
+      </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
