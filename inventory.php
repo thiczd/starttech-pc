@@ -20,7 +20,8 @@
           document.getElementById("nav-placeholder").innerHTML = data;
         });
     </script>
-
+    <p class="h3 text-center">Inventory</p>
+    <hr />
     <div class="container" id="card">
       <div class="row border justify-content-center mt-4">
         <div class="col-md-4 border">
@@ -31,9 +32,10 @@
             src="images/placeholder.svg"
             height="200"
             width="200"
+            class="mx-auto d-block img-fluid"
           />
           <hr />
-          <p id="item-desription" class="text-center mt-4">Description</p>
+          <p id="item-description" class="text-center mt-4">Description</p>
         </div>
       </div>
     </div>
