@@ -12,13 +12,7 @@
   </head>
   <body>
     <div id="nav-placeholder"></div>
-<?php 
-$servername = "";
-$username = "";
-$password = "";  // CHANGE ON PROD
-$dbname = "items";
 
-?>
     <script>
       fetch("nav.html")
         .then((response) => response.text())

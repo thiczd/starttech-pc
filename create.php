@@ -69,7 +69,7 @@ mysqli_close($link);
 <body>
     <div class="container">
         <h2>New Item</h2>
-        <form method="post">
+     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <div class="row">
         <label>Name</label>
         <div class="col-sm-6">
