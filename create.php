@@ -7,7 +7,7 @@ $name = $description = $image = "";
 $name_err = $description_err = $image_err = "";
  if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-$input_name = trim(string: $_POST["name"]);
+$input_name = trim($_POST["name"]);
 
 if($input_name == ""){
     $name_err = "Please Enter a valid item name";
@@ -19,7 +19,7 @@ if($input_name == ""){
 
 
 
-$input_description = trim(string: $_POST["description"]);
+$input_description = trim($_POST["description"]);
 if($input_description == ""){
     $description_err = "Please Enter a valid item description";
 }elseif(!filter_var($input_description, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
@@ -27,17 +27,17 @@ if($input_description == ""){
     } else{
         $description= $input_description;
     }
-if(empty($name_err) && empty($address_err) && empty($salary_err)){
+if(empty($name_err) && empty($description_err)){
         // Prepare an insert statement
         $sql = "INSERT INTO items (name, description) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_description);
+            mysqli_stmt_bind_param($stmt, "ss", $param_name, $param_description);
             
             // Set parameters
             $param_name = $name;
-            $param_address = $description;
+            $param_description = $description;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
