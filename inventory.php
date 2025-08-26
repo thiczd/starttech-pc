@@ -1,3 +1,39 @@
+
+
+<?php 
+
+
+require_once "config.php";
+
+        $query = "SELECT * from items";
+        $stmt = mysqli_prepare($link, $query);
+        mysqli_stmt_execute($stmt);
+
+$result = mysqli_stmt_get_result($stmt);
+$items = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $items[] = $row;
+}
+echo json_encode($items);
+mysqli_close($link);
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,26 +55,25 @@
         .then((data) => {
           document.getElementById("nav-placeholder").innerHTML = data;
         });
+     items.forEach((item) => {
+        container.innerHTML += `
+          <div class="row border justify-content-center mt-4">
+            <div class="col-md-4 border p-3">
+              <p class="h5 text-center">${item.name}</p>
+              <hr />
+              <img
+                src="${item.image || 'images/placeholder.svg'}"
+                height="200"
+                width="200"
+                class="mx-auto d-block img-fluid"
+              />
+              <hr />
+              <p class="text-center mt-4">${item.description}</p>
+            </div>
+          </div>
+        `;
+      });
     </script>
-    <p class="h3 text-center">Inventory</p>
-    <hr />
-    <div class="container" id="card">
-      <div class="row border justify-content-center mt-4">
-        <div class="col-md-4 border">
-          <p class="h5 text-center" id="item-name">Item name</p>
-          <hr />
-          <img
-            id="item-image"
-            src="images/placeholder.svg"
-            height="200"
-            width="200"
-            class="mx-auto d-block img-fluid"
-          />
-          <hr />
-          <p id="item-description" class="text-center mt-4">Description</p>
-        </div>
-      </div>
-    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

@@ -7,7 +7,7 @@ $name = $description = $image = "";
 $name_err = $description_err = $image_err = "";
  if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-$input_name = trim($_POST["name"]);
+$input_name = trim($_POST["name"] ?? "");
 
 if($input_name == ""){
     $name_err = "Please Enter a valid item name";
@@ -19,7 +19,7 @@ if($input_name == ""){
 
 
 
-$input_description = trim($_POST["description"]);
+$input_description =  trim($_POST["description"] ?? "");
 if($input_description == ""){
     $description_err = "Please Enter a valid item description";
 }elseif(!filter_var($input_description, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
@@ -42,7 +42,7 @@ if(empty($name_err) && empty($description_err)){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
-                header("location: index.php");
+                header("location: create.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -73,11 +73,11 @@ mysqli_close($link);
     <div class="row">
         <label>Name</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="item name" value="">
+            <input type="text" class="form-control" name="name" value="">
         </div>
            <label>Description</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="item desription" value="">
+            <input type="text" class="form-control" name="description" value="">
         </div>
            <div class="col-sm-6"></div>
         <label for="fileUpload">Image:</label>
